@@ -1,0 +1,22 @@
+{
+  "name": "selftaught-e",
+  "version": "1.0.0",
+  "description": "application for English learners",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^3.6.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.5",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \" npm run client\""
+  },
+  "author": "caobo171",
+  "license": "ISC"
+}
