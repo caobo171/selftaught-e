@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "application for English learners",
   "main": "index.js",
+  "engines":{
+    "node":"8.11.3",
+    "npm":"6.1.0"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "concurrently": "^3.6.1",
@@ -15,7 +19,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \" npm run client\""
+    "dev": "concurrently \"npm run server\" \" npm run client\"",
+    "start":"node index.js"
   },
   "author": "caobo171",
   "license": "ISC"
