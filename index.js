@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const keys = require('./configs/keys');
 const socket = require('socket.io');
 
+
 console.log(keys.mongoURI);
 mongoose.connect(keys.mongoURI,
     { useNewUrlParser: true }
@@ -13,8 +14,18 @@ mongoose.connect(keys.mongoURI,
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
-const port = process.env.PORT || 5000;
 
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'));
+
+    const path = require('path');
+    app.get('*',(req,res)=>{
+       res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+    });
+}
+
+
+const port = process.env.PORT || 5000;
 server.listen(port, () => {
     console.log(`server is running on port ${port}`)
 })
