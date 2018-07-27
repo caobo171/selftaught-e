@@ -10,6 +10,14 @@ const userSchema = new Schema({
        type : String,
        default : null
     },
+    imgUrl:{
+        type :String,
+        default : 'https://c5.rgstatic.net/m/4671872220764/images/template/default/profile/profile_default_m.jpg' 
+    },
+    name:{
+        type:String,
+        default:'unknown'
+    },
     exp: {
         type:Number,
         default : 0
