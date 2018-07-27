@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 
-import TextTest from './TextTest';
+import TextTest from './texttest/TextTest';
 
 class App extends Component {
   render() {
