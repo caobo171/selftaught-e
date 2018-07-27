@@ -9,7 +9,6 @@ passport.serializeUser((user, done) => {
 
     done(null, user.id);
 });
-console.log(keys);
 passport.deserializeUser((id, done) => {
     User.findById(id)
         .then(user => {
@@ -27,11 +26,15 @@ passport.use(new FacebookStrategy({
     async (accessToken, refreshToken, profile, done) => {
         const existUser = await User.findOne({ facebookId: profile.id })
         console.log(profile._json.picture.data.url);
+        console.log(profile);
 
         if (existUser) {
             return done(null, existUser);
         } else {
-            const user = await new User({ facebookId: profile.id }).save()
+            const user = await new User({ 
+                facebookId: profile.id ,
+                name:profile.displayName
+            }).save()
             done(null, user)
 
         }
@@ -46,12 +49,17 @@ passport.use(new GoogleStrategy({
 },
     async (accessToken, refreshToken, profile, done) => {
         const existUser = await User.findOne({ googleId: profile.id })
+        console.log(profile.displayName);
+        console.log('pppppppppppppppppppppppp');
         console.log(profile);
 
         if (existUser) {
             return done(null, existUser);
         } else {
-            const user = await new User({ googleId: profile.id }).save()
+            const user = await new User({
+                 googleId: profile.id ,
+                 name:profile.displayName
+                }).save()
             done(null, user)
 
         }
