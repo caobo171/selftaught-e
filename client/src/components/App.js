@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import * as userActions from '../actions/userActions';
 import Heading from './Heading';
@@ -9,6 +10,7 @@ import Footer from './FooterComp';
 import TestPlace from './TestPlace';
 import Profile from './Profile';
 import axios from 'axios';
+
 
  window.axios = axios;
 class App extends Component {
