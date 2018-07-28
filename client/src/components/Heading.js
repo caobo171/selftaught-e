@@ -64,7 +64,7 @@ class Heading extends Component {
         }
     }
     render() {
-        console.log(this.props.auth);
+        //console.log(this.props.auth);
         return (
             <nav className="blue">
                 <div className="container">

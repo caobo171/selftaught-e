@@ -1,26 +1,20 @@
 import React, {Component} from 'react';
 import {reduxForm, Field} from 'redux-form';
+import TextTestField from './TextTestField';
+
 
 class TextTestForm extends Component {
+   
+    const
+
     render(){
-        const { fields: {title, content, keys}, handleSubmit } = this.props;
+        const {  handleSubmit } = this.props;
         return(
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(values =>console.log(values))}>
               <h3>Create A New Test</h3>
-              <div className="input-field">
-                <label>Title</label>
-                <input type="text"  {...title}/>
-              </div>              
-              <div className="input-field">
-                <label>Content</label>
-                <textarea className="materialize-textarea" {...content}/>
-              </div>              
-              <div className="input-field">
-                <label>Keys</label>
-                <textarea className="materialize-textarea" {...keys}/>
-              </div>  
-              <button className="btn red">Cancel</button> 
-              <button type="submit" className="btn primary">Submit</button>                                    
+              <Field type="text" name="surveyTitle" component={TextTestField} />        
+              <button className="btn primary" type="submit">Submit</button>                               
+              <button className="btn red">Cancer</button>                               
           </form>
         )
     }

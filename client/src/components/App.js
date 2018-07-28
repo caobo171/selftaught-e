@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-
 import { connect } from 'react-redux';
 import * as userActions from '../actions/userActions';
+import axios from 'axios';
+
+
 import Heading from './Heading';
 import LandingPage from './LandingPage';
-import TextTest from './TextTest';
+import TextTest from '../components/texttest/TextTest';
 import Footer from './FooterComp';
 import TestPlace from './TestPlace';
 import Profile from './Profile';
-import axios from 'axios';
+import Dashboard from './Dashboard';
+
 
 
  window.axios = axios;
@@ -28,6 +31,7 @@ class App extends Component {
               <Route exact={true} path="/" component={LandingPage} />
               <Route exact={true} path="/testplace" component = {TestPlace}/>
               <Route exact={true} path="/profile/:idUser" component =  {Profile}/>
+              <Route exact={true} path="/dashboard" component ={Dashboard} />
               <Footer/>
             </div>
             
