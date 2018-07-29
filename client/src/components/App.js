@@ -12,6 +12,7 @@ import Footer from './FooterComp';
 import TestPlace from './TestPlace';
 import Profile from './Profile';
 import Dashboard from './Dashboard';
+import Game from './game/Game';
 
 
 
@@ -32,6 +33,7 @@ class App extends Component {
               <Route exact={true} path="/testplace" component = {TestPlace}/>
               <Route exact={true} path="/profile/:idUser" component =  {Profile}/>
               <Route exact={true} path="/dashboard" component ={Dashboard} />
+              <Route exact={true} path='/game' component={Game} />
               <Footer/>
             </div>
             

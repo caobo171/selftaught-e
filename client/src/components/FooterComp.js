@@ -23,7 +23,7 @@ const FooterComp = () => {
             className='example blue'
         >
             <h5 className="white-text">Các trang web tự học </h5>
-            <p className="grey-text text-lighten-4">"Move fast and breack things. Unless you are breaking stuff, you are not moving fast engouh"</p>
+            <p className="grey-text text-lighten-4">"Move fast and breack things. Unless you are breaking stuff, you are not moving fast enough"</p>
             <p>- Mark Zuckerberg -</p>
         </Footer>
     );
