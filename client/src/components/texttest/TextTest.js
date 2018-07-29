@@ -1,54 +1,32 @@
 import React, {Component} from 'react';
-import _ from 'lodash';
-import AutosizeInput from 'react-input-autosize';
-import uuid from 'uuid';
-
-import data from '../../fake_data/texttestData';
+import {reduxForm} from 'redux-form';
 import TextTestForm from './TextTestForm';
+import TextTestFormReview from './TextTestFormReview';
 
 class TextTest extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            terms:[] 
+    state ={showFormReview: false};
+    
+    renderContent(){
+        if(this.state.showFormReview){
+            return(
+                <TextTestFormReview
+                  onCancel={()=>this.setState({showFormReview: false})}
+                />
+            )
         }
+        return(
+            <TextTestForm 
+               onTestSubmit= {()=> this.setState({showFormReview: true})}
+            />
+        )
     }
 
-    Data = _(data.texttest_data).split('/').value();
-
-    disPlay(){
-     return _.map(this.Data, (data)=>{
-         if(_.startsWith(data, '*')){
-            data= _.replace(data,'*','');
-            return(
-                //<span dangerouslySetInnerHTML={{ __html: `<input class="hello" type="text" placeholder="${data}" >` }} />
-                <AutosizeInput   
-                    className='input'
-                    key={uuid()}          
-                    name="form-field-name"
-                    placeholder = {data}
-                 />
-            )
-            }else{
-                return(
-                    <span key={uuid()}>{data}</span>
-                )
-            }
-            })
-    }   
     render(){
         return(
            <div className="container">
               <div className ="card ">
                <div className="card-content">
-                 <span className="card-title">Text Test</span>
-                 {this.disPlay()}  
-                </div>
-              </div>    
-              <div className ="card ">
-               <div className="card-content">
-                 <span className="card-title">Text Test Form</span>
-                 <TextTestForm />
+                 {this.renderContent()}
                 </div>
               </div>    
             </div>
@@ -58,4 +36,6 @@ class TextTest extends Component {
     
 }
 
-export default TextTest;
+export default reduxForm({
+    form:'TextTestForm'
+})(TextTest);

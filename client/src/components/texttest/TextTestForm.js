@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {reduxForm, Field} from 'redux-form';
-import TextTestField from './TextTestField';
+import {Link} from 'react-router-dom';
+
+import TextTestField_input from './TextTestField_input';
+import TextTestField_textarea from './TextTestField_textarea';
 
 
 class TextTestForm extends Component {
@@ -10,17 +13,21 @@ class TextTestForm extends Component {
     render(){
         const {  handleSubmit } = this.props;
         return(
-          <form onSubmit={handleSubmit(values =>console.log(values))}>
+          <form onSubmit={handleSubmit(this.props.onTestSubmit)}>
               <h3>Create A New Test</h3>
-              <Field type="text" name="surveyTitle" component={TextTestField} />        
+              <Field label="Title" type="text" name="title" component={TextTestField_input} />        
+              <Field label="ConTent" type="text" name="content" component={TextTestField_textarea} />        
+              <Field label="Keys" type="text" name="keys" component={TextTestField_textarea} />        
               <button className="btn primary" type="submit">Submit</button>                               
-              <button className="btn red">Cancer</button>                               
+              <Link to="/dashboard" className="btn red">Cancer</Link>                               
           </form>
         )
     }
 }
 
+
+
 export default reduxForm({
-    form: 'TextTest',
-    fields: ['title','content','keys']
+    form: 'TextTestForm',
+    destroyOnUnmount: false
 })(TextTestForm) ;

@@ -22,6 +22,16 @@
     background-attachment: fixed;
 }
 
+label{
+    font-size: 20px !important;
+    font-weight: bold !important;
+
+}
+
+.confirm-field{
+    margin: 5px!important;
+}
+
 
 /* for facebook button 
 */

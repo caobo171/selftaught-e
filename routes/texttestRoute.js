@@ -1,18 +1,20 @@
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 
-const Survey = mongoose.model('tests');
+const Test = mongoose.model('tests');
 
 module.exports = app =>{
-    app.post('/api/tests', requireLogin,async (req, res)=>{
+    app.post('/api/texttest', requireLogin,async (req, res)=>{
        const {title, content, keys} =req.body;
+       console.log(req.body);
 
-       const survey = new Survey({
+       const test = new Test({
           title,
           content,
           keys
        });
 
-       await survey.save();
+       let data = await test.save();
+       res.send(data);
     });
 };
