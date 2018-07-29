@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Modal, Dropdown, NavItem } from 'react-materialize';
+import uuid from 'uuid';
 class Heading extends Component {
     renderContent() {
         switch (this.props.auth) {
@@ -29,7 +30,7 @@ class Heading extends Component {
                 );
             default:
                 return [
-                    <Dropdown trigger={
+                    <Dropdown  trigger={
                         <div>
                             <li style={{ width: '50px' }}>      </li>
                             <li key="2"><a >{this.props.auth.name}</a></li>
@@ -40,7 +41,7 @@ class Heading extends Component {
 
                         </div>
                     }>
-                        <NavItem disabled>
+                        <NavItem key={uuid()} disabled>
                             <Link to={`/profile/${this.props.auth._id}`}>
                                 <img src={this.props.auth.imgUrl
                                 } alt="" className="circle responsive-img"
@@ -48,8 +49,8 @@ class Heading extends Component {
                                 />
                             </Link>
                         </NavItem>
-                        <NavItem><span className="red-text text-accent-4 bold">{this.props.auth.name}</span></NavItem>
-                        <NavItem>
+                        <NavItem key={uuid()}><span className="red-text text-accent-4 bold">{this.props.auth.name}</span></NavItem>
+                        <NavItem key={uuid()}>
                             <span className="blue-text text-darken-2 bold">Exp: {this.props.auth.exp}
                             </span><span>           </span>
                             <span className="blue-text text-darken-2 bold">Coin: {this.props.auth.coin}

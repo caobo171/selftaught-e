@@ -33,7 +33,7 @@ app.use(passport.session());
 
 require('./routes/authRoute')(app);
 require('./routes/userRoute')(app);
-require('./routes/testRoute')(app);
+require('./routes/texttestRoute')(app);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
