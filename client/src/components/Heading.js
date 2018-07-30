@@ -30,11 +30,14 @@ class Heading extends Component {
                 );
             default:
                 return [
-                    <Dropdown  trigger={
+                    <div>
+                    <Dropdown key={uuid()}  trigger={
                         <div>
-                            <li style={{ width: '50px' }}>      </li>
-                            <li key="2"><a >{this.props.auth.name}</a></li>
-                            <li><img src={this.props.auth.imgUrl
+                           
+                            <li key={uuid()} style={{ width: '50px' }}>      </li>
+                            
+                            <li key={uuid()}key="2"><a >{this.props.auth.name}</a></li>
+                            <li key={uuid()}><img src={this.props.auth.imgUrl
                             } alt="" className="circle responsive-img"
                                 style={{ textAlign: 'center', width: '40px', height: '40px', marginTop: '10px' }}
                             /><span></span></li>
@@ -42,7 +45,7 @@ class Heading extends Component {
                         </div>
                     }>
                         <NavItem key={uuid()} disabled>
-                            <Link to={`/profile/${this.props.auth._id}`}>
+                            <Link key={uuid()} to={`/profile/${this.props.auth._id}`}>
                                 <img src={this.props.auth.imgUrl
                                 } alt="" className="circle responsive-img"
                                     style={{ textAlign: 'center', width: '60px', height: '60px' }}
@@ -56,9 +59,11 @@ class Heading extends Component {
                             <span className="blue-text text-darken-2 bold">Coin: {this.props.auth.coin}
                             </span>
                         </NavItem>
-                        <NavItem divider />
-                        <a href="/api/logout"><span className="blue-text text-lighten-2 bold ">Logout</span></a>
+                        <NavItem key={uuid()} divider />
+                        <Link to="/api/logout"><span className="blue-text text-lighten-2 bold ">Logout</span></Link>
+                        <Link to="/dashboard"><span className="blue-text text-lighten-2 bold ">DashBoard</span></Link>
                     </Dropdown>
+                    </div>
                 ];
 
 
