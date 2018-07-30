@@ -1,12 +1,28 @@
-//import openSocket from 'socket.io-client';
+export var text ='';
 
 export default function sketch (p) {
     let rotation = 0;
+    var recognition = new window.webkitSpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = true;
+    recognition.continuous = true;
+    recognition.start();
+    console.log(recognition); 
 
-   // const socket = openSocket('http://localhost/5000');
+    recognition.onresult = (e) => {
+      var last = e.results.length - 1;
+      text = e.results[last][0].transcript;
+      console.log(text);
+    }
+
+    setInterval(function(){
+      recognition.stop();
+      console.log(recognition);
+      //recognition.start();
+    }, 10000);
   
     p.setup = function () {
-      p.createCanvas(600, 400, );
+      p.createCanvas(800, 600);
     };
   
     p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
@@ -17,7 +33,7 @@ export default function sketch (p) {
   
     p.draw = function () {
         p.background(200);
-        p.fill('yellow');
+        p.fill(255,255,0);
         p.rect(0,0,10,10);
     };
   };

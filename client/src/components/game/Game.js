@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import P5Wrapper from 'react-p5-wrapper';
 import sketch from './sketch';
+import text from './sketch';
 import io from 'socket.io-client';
 
 class Game extends Component {    
-/*     constructor(props){
+      constructor(props){
         super(props);
         this.state ={
             socket : null,
@@ -14,15 +15,15 @@ class Game extends Component {
     componentWillMount(){
         this.initSocket();
     }
-
+ 
     initSocket = () => {
-        const socket = io.connect('http://localhost/5000');
+        const socket = io.connect('http://localhost:5000');
         console.log(socket);
-        socket.on("connection", () => {
+        socket.on("connect", () => {
             console.log('connected');
         })
         this.setState({socket});
-    } */
+    }  
     
     render(){ 
         return( 
