@@ -1,4 +1,4 @@
-import { FETCH_USER, SUBMIT_TEST } from './types';
+import { FETCH_USER, SUBMIT_TEST , FETCH_TESTS} from './types';
 import axios from 'axios';
 export const fetchUser = () => async dispatch => {
     const res = await axios.get('/api/current_user')
@@ -27,3 +27,14 @@ export const submitTest = (values,history) =>async dispatch =>{
          }
      )
 };
+export const fetchTests = () =>async dispatch =>{
+     const res = await axios.get('/api/texttest')
+     
+     dispatch(
+         {
+             type:FETCH_TESTS,
+             payload:res.data
+         }
+     )
+};
+
