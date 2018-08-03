@@ -50,7 +50,4 @@ server.listen(port, () => {
 
 
 io.on('connection', (socket) => {
-    socket.on("client-send-transcript" , function(data) {
-        socket.emit("server-send-transcript" ,data );
-    });
 })

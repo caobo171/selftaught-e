@@ -6,7 +6,7 @@ class Game extends Component {
     render(){ 
         return( 
             <div>
-                <p>wow for down, hi for left, hello for up and right is still right</p>
+                <p>wow for down, hi for left, hello for up and yes is now right</p>
                 <P5Wrapper sketch={sketch}/>
             </div>
         );
