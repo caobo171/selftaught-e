@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import * as actions from '../../actions';
+import {submitTest} from '../../actions/texttestActions'
 
 import _ from 'lodash';
 import AutosizeInput from 'react-input-autosize';
@@ -73,4 +73,4 @@ function mapStateToProps(state){
       }
 }
 
-export default connect(mapStateToProps,actions)(withRouter(TextTestFormReview)) ;
+export default connect(mapStateToProps,{submitTest})(withRouter(TextTestFormReview)) ;

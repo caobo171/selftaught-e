@@ -1,5 +1,6 @@
-import { FETCH_USER, SUBMIT_TEST , FETCH_TESTS} from './types';
+import { FETCH_USER} from './types';
 import axios from 'axios';
+
 export const fetchUser = () => async dispatch => {
     const res = await axios.get('/api/current_user')
     dispatch({
@@ -16,25 +17,5 @@ export const updateExpUser = (idUser,exp)=> async dispatch =>{
     })
 }
 
-export const submitTest = (values,history) =>async dispatch =>{
-     const res = await axios.post('/api/texttest', values)
-     
-     history.push('/dashboard');
-     dispatch(
-         {
-             type:SUBMIT_TEST,
-             payload:res.data
-         }
-     )
-};
-export const fetchTests = () =>async dispatch =>{
-     const res = await axios.get('/api/texttest')
-     
-     dispatch(
-         {
-             type:FETCH_TESTS,
-             payload:res.data
-         }
-     )
-};
+
 

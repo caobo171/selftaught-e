@@ -30,13 +30,12 @@ class Heading extends Component {
                 );
             default:
                 return [
-                    <div>
                     <Dropdown key={uuid()}  trigger={
                         <div>
                            
                             <li key={uuid()} style={{ width: '50px' }}>      </li>
                             
-                            <li key={uuid()}key="2"><a >{this.props.auth.name}</a></li>
+                            <li key={uuid()}><a >{this.props.auth.name}</a></li>
                             <li key={uuid()}><img src={this.props.auth.imgUrl
                             } alt="" className="circle responsive-img"
                                 style={{ textAlign: 'center', width: '40px', height: '40px', marginTop: '10px' }}
@@ -46,7 +45,7 @@ class Heading extends Component {
                     }>
                         <NavItem key={uuid()} disabled>
                             <Link key={uuid()} to={`/profile/${this.props.auth._id}`}>
-                                <img src={this.props.auth.imgUrl
+                            <img src={this.props.auth.imgUrl
                                 } alt="" className="circle responsive-img"
                                     style={{ textAlign: 'center', width: '60px', height: '60px' }}
                                 />
@@ -63,7 +62,6 @@ class Heading extends Component {
                         <Link to="/api/logout"><span className="blue-text text-lighten-2 bold ">Logout</span></Link>
                         <Link to="/dashboard"><span className="blue-text text-lighten-2 bold ">DashBoard</span></Link>
                     </Dropdown>
-                    </div>
                 ];
 
 

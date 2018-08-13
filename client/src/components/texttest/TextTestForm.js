@@ -7,8 +7,7 @@ import TextTestField_textarea from './TextTestField_textarea';
 
 
 class TextTestForm extends Component {
-   
-    const
+
 
     render(){
         const {  handleSubmit } = this.props;
