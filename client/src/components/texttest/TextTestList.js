@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchTests} from '../../actions';
+import {fetchTests} from '../../actions/texttestActions';
 import _ from 'lodash';
+
+import TextTestDetails from './TextTestDetails';
 
 
 class TextTestList extends Component {
@@ -10,13 +12,9 @@ class TextTestList extends Component {
     }
 
     renderTests(){
-       return _.map(this.props.texttest, test => {
+       return _.map(this.props.texttest.tests, test => {
            return(
-               <div key={test._id} className="card">
-                 <div className="card-content">
-                   <span className="card-title"> {test.title} </span>
-                 </div>
-               </div>
+               <TextTestDetails key={test._id} test={test} />
            )
        })
     }

@@ -13,6 +13,8 @@ import TestPlace from './TestPlace';
 import Profile from './Profile';
 import Dashboard from './Dashboard';
 import Game from './game/Game';
+import TextTestDisplay from './texttest/texttest_individual/TextTestDisplay'
+import TextTestEditForm from './texttest/TextTestEditForm';
 
 
 
@@ -22,6 +24,7 @@ class App extends Component {
     this.props.fetchAuth();
   }
   render() {
+    
     return (
       <div className="App">
          <BrowserRouter>
@@ -34,6 +37,8 @@ class App extends Component {
               <Route exact={true} path="/profile/:idUser" component =  {Profile}/>
               <Route exact={true} path="/dashboard" component ={Dashboard} />
               <Route exact={true} path='/game' component={Game} />
+              <Route exact={true} path='/texttest/:_id' component={TextTestDisplay}/>
+              <Route exact={true} path='/texttest/edit/:_id' component={TextTestEditForm}/>
               <Footer/>
             </div>
             

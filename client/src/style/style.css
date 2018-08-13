@@ -8,11 +8,6 @@
 .btn{
     margin: 10px !important ;
 }
-.input{
-   height: 40px !important;
-   padding-bottom: 4px !important;
-   
-}
 .hello {
    width:10% !important;
     height: 30px !important;
@@ -31,7 +26,6 @@ label{
 .confirm-field{
     margin: 5px!important;
 }
-
 
 /* for facebook button 
 */
