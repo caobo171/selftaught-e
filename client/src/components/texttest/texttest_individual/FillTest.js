@@ -3,6 +3,8 @@ import _ from 'lodash';
 import uuid from 'uuid';
 import AutosizeInput from 'react-input-autosize';
 
+let SCORE = 0
+
 class FillTest extends Component {
    
    constructor(props){
@@ -12,7 +14,8 @@ class FillTest extends Component {
           values:[],
           colorGreen:"",
           colorRed:"",
-          typing: false
+          typing: false,
+          score:0
        }
 
    }
@@ -23,34 +26,47 @@ class FillTest extends Component {
        })
    }
 
-   async onSubmit(e){
+    onSubmit(e){
        e.preventDefault();
-       await this.setState({
+       if(this.props.test.keys && this.state.values){
+        const Data = _(this.props.test.content).split('/').value();
+        _.map(Data, (data,i)=>{
+             //LODASH SOLVE THE PROBLEM ABOUT COMPARE KEYS
+             const KEYS =_.join(_.split(_.lowerCase(_.trim(this.props.test.keys[_.floor(i/2)])),' '),'');
+             const ANSWER_VALUE = _.join(_.split(_.lowerCase(_.trim(this.state.values[i])),' '),'');
+             //LODASH DONE
+             if(KEYS === ANSWER_VALUE){
+                 this.setState({score:this.state.score ++})
+             }
+        })
+       }
+        this.setState({
            colorGreen:"green",
            colorRed:"red",
            typing:true
        });
-       console.log(this.state)
-    //    let count
-    //    for(count=0; count<this.props.test.keys.length; count++){          
-    //      if(_.trim(this.props.test.keys[count])===_.trim(this.state.values[count*2+1])){
-    //          this.setState({color:""})
-    //      }else{
-    //         this.setState({color:"green"})
-    //      }
-    //    }
    }
 
+   displayCore(){
+       if(this.props.test.keys){
+        return(
+            <h4>{this.state.score + '/' +this.props.test.keys.length}</h4>
+        )
+       }
+   }
+
+   
      renderContent(){
-         console.log(this.props.test);
          if(this.props.test.keys){
             const Data = _(this.props.test.content).split('/').value();
-            console.log(this.state)
              return _.map(Data,(data,i)=>{
+                 //LODASH SOLVE THE PROBLEM ABOUT COMPARE KEYS
+                const KEYS =_.join(_.split(_.lowerCase(_.trim(this.props.test.keys[_.floor(i/2)])),' '),'');
+                const ANSWER_VALUE = _.join(_.split(_.lowerCase(_.trim(this.state.values[i])),' '),'');
+                //LODASH DONE
                  if(_.startsWith(data, '*')){
                     data= _.replace(data,'*','');
-                        if(_.trim(this.props.test.keys[_.floor(i/2)])===_.trim(this.state.values[i])){
-                            console.log(this.props.test.keys[_.floor(i/2)]+ '====='+this.state.values[i])
+                        if(KEYS === ANSWER_VALUE){                      
                             return(
                                 <AutosizeInput  
                                     style={{color:this.state.colorGreen}}
@@ -58,7 +74,7 @@ class FillTest extends Component {
                                     key={i}          
                                     name={this.state.values[i]}
                                     placeholder = {data}
-                                    onChange={(event) => this.onChange(i, event)}
+                                    onChange={(event) => {this.onChange(i, event)}}
                                     value={this.state.values[i]}
                                     readOnly={this.state.typing}
                                  />
@@ -81,26 +97,30 @@ class FillTest extends Component {
                         return(
                             <span key={uuid()}>{data}</span>
                         )
-                    }
-                })   
-         } else{
+                    }}
+             )} 
+          else{
              console.log('fail')
-         }
-        
+         }      
     }
+
+
     render(){
         const {title} = this.props.test;
         return(
             <div className="card">
                 <div className="card-content">
                     <div className="card-title">{title}</div>
+                    {this.displayCore()}
                     <form onSubmit={this.onSubmit.bind(this)}>
                    {this.renderContent()}
-                   <input
-                    type="submit"
-                    className="btn teal"
-                    value="Submit"
-                   />
+                    <div className="card-action"> 
+                        <input
+                            type="submit"
+                            className="btn teal"
+                            value="Submit"
+                        />
+                    </div>
                     </form>
                    
                 </div>

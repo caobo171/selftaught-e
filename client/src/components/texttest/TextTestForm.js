@@ -15,6 +15,8 @@ class TextTestForm extends Component {
           <form onSubmit={handleSubmit(this.props.onTestSubmit)}>
               <h3>Create A New Test</h3>
               <Field label="Title" type="text" name="title" component={TextTestField_input} />        
+              <Field label="Origin Text" type="text" name="origintext" component={TextTestField_textarea} />        
+              <Field label="Explaing Text" type="text" name="explainingtext" component={TextTestField_textarea} />        
               <Field label="ConTent" type="text" name="content" component={TextTestField_textarea} />        
               <Field label="Keys" type="text" name="keys" component={TextTestField_textarea} />        
               <button className="btn primary" type="submit">Submit</button>                               

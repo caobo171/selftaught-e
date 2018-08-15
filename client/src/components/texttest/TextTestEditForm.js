@@ -7,11 +7,13 @@ import _ from 'lodash';
 
 
 class TextTestEditForm extends Component {
-   
+    // origintext, explainingtext
    constructor(props){
        super(props)
        this.state={
            title:'',
+           origintext:'',
+           explainingtext:'',
            content:'',
            keys:'',
        }
@@ -34,6 +36,8 @@ class TextTestEditForm extends Component {
         //    test.keys = isEmpty(test.keys) ? test.keys : '';
            this.setState({
                title:test.title ,
+               origintext: test.origintext,
+               explainingtext: test.explainingtext,
                content:test.content,
                keys:_.join(test.keys,'/')
            })
@@ -46,6 +50,8 @@ class TextTestEditForm extends Component {
 
     const texttest ={
         title:this.state.title,
+        origintext: this.state.origintext,
+        explainingtext: this.state.explainingtext,
         content:this.state.content,
         keys:this.state.keys
     }
@@ -71,6 +77,8 @@ class TextTestEditForm extends Component {
                   <div className="card-title">Edit Post</div>
                   <form onSubmit={this.onSubmit}>
                   <input type="text" value={this.state.title} onChange={this.onChange} name="title" />
+                  <textarea className="materialize-textarea" type="text" value={this.state.origintext} onChange={this.onChange} name="origintext" />
+                  <textarea className="materialize-textarea" type="text" value={this.state.explainingtext} onChange={this.onChange} name="explainingtext"/>
                   <textarea className="materialize-textarea" type="text" value={this.state.content} onChange={this.onChange} name="content" />
                   <textarea className="materialize-textarea" type="text" value={this.state.keys} onChange={this.onChange} name="keys"/>
                   <input className="btn primary" value="Submit" type="submit"/>
