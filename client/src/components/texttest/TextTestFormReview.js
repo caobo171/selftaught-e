@@ -49,6 +49,10 @@ class TextTestFormReview extends Component{
                 <div>
                     <label className="confirm-field">Test Tile</label>
                     <div className="confirm-field">{formValues.title}</div>
+                    <label className="confirm-field">Origin Text Test</label>
+                    <div className="confirm-field">{formValues.origintext}</div>
+                    <label className="confirm-field">Explaining Text Test</label>
+                    <div className="confirm-field">{formValues.explainingtext}</div>
                     <label className="confirm-field">Test Content</label>
                     <div className="confirm-field">{this.displayContent()}</div>
                     <label className="confirm-field">Test Keys</label>

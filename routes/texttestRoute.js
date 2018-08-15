@@ -19,9 +19,11 @@ module.exports = app =>{
 
     //Update Test
     app.post('/api/texttest/:_id', async (req,res)=>{
-        const {title, content, keys} = req.body;
+        const {title,origintext, explainingtext , content, keys} = req.body;
         Test.findByIdAndUpdate({_id: req.params._id}, {
             title: title,
+            origintext,
+            explainingtext,
             content:content,
             keys:keys.split('/')
         },()=>{
@@ -39,9 +41,11 @@ module.exports = app =>{
 
     //Create Test
     app.post('/api/texttest', requireLogin,async (req, res)=>{
-       const {title, content, keys} =req.body;
+       const {title,origintext, explainingtext, content, keys} =req.body;
        const test = new Test({
           title,
+          origintext,
+          explainingtext,
           content,
           keys: keys.split('/')
        });
